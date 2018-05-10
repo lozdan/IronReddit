@@ -1,0 +1,12 @@
+<form action="/create-thread" method="POST">
+    <label>Title</label>
+    <input name='threadTitle' type="text">
+    <label>Picture</label>
+    <input name='picture' type="file"> 
+    
+    {{#if message}}
+        <h5>{{message}}</h5>
+    {{/if}}
+
+    <button>Submit</button>
+</form>

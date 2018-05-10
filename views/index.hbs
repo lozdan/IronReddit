@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<nav>
+    <img class="logo-nav" src="http://res.cloudinary.com/ddibftjux/image/upload/v1525990468/images/my-file-name.png">
+
+    <div class="links">
+        <ul>
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+            <li>
+                <a href="/create-post">Post</a>
+            </li>
+            <li>
+                <a href="/create-thread">Thread</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="threads-post">
+    {{#each threads}}
+    <a class="single-thread" data-id="{{this._id}}" href="javascript:">
+        <h1>{{this.title}}</h1>
+        <h4>{{this.moderator.username}}</h4>
+    </a>
+    {{/each}}
+</div>
+
+<div class="posts">
+    
+</div>
