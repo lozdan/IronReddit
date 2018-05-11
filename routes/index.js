@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
         thread.moderator = moderator;
         return thread;
       }))).then(threads => {
+        console.log(threads)
         res.render('index', { threads });
       })
     })
