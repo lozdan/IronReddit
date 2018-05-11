@@ -15,6 +15,7 @@ router.get('/create-post-text', (req, res, next) => {
         res.redirect('/login');
     }
     res.render('post/post-text');
+
 })
 
 router.post('/create-post-text', (req, res, next) => {
@@ -185,7 +186,7 @@ router.get ('/post/:id/comment', (req, res, next) => {
   })
 
   router.post('/update-img-prof', uploadCloud.single('photo'), (req, res, next) => {
-    
+
   })
 
 module.exports = router;
