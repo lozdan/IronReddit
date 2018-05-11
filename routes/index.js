@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
       Promise.all(threads.map(thread => User.findById(thread.moderatorId).then(moderator => {
         thread = thread.toObject();
         thread.moderator = moderator;
-        console.log(thread);
         return thread;
       }))).then(threads => {
         res.render('index', { threads });

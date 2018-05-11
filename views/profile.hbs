@@ -1,0 +1,62 @@
+<header class="profile-header">
+    <div>
+        <div>
+            <img class="prof-user-img" src={{user.picturePath}}>
+        </div>
+        <div>
+            <h2>{{user.username}}</h2>
+        </div>
+    </div>
+    <div>
+        <a href="/update-prof-img" class="edit-prof-img">
+            <img class="prof-edit-img" src="https://res.cloudinary.com/ddibftjux/image/upload/v1526044497/edit-pencil.png">
+        </a>
+    </div>
+</header>
+
+<section>
+    {{#each posts}}
+    <div class="single-post">
+        <div class="top">
+            <div>
+                <img class="header-image" src="{{user.picturePath}}">
+                {{user}}
+            </div>
+            <div>
+                <h2>{{this.title}}</h2>
+                <h5>{{user.username}}</h5>
+            </div>
+        </div>
+        <div class="content">
+            {{#if this.link}}
+            <a href="{{this.link}}" class="link">{{this.link}}</a>
+            {{else}}
+                <img class="content-img" src={{this.picturePath}}>
+            {{/if}}
+
+            {{#if this.description}}
+            <p class="text">{{this.description}}</p>
+            {{/if}}
+            
+        </div>
+        <div class="bottom">
+            <div class="upvote">
+                <div>
+                    <button class="upvote" id={{this._id}}>
+                        <img src="/images/peace-emoji-navy.png">
+                    </button>
+                    <span class="vote-count-{{this._id}}">{{this.votes}}</span>
+                </div>
+            </div>
+            <div style="border-left: 2px solid #1ba8e2; height: 50px;"></div>
+            <div class="comment-board">
+                <button class="comment-button" id="comment-{{this._id}}">
+                    <img src="/images/chat box.png"> </button>
+            </div>
+        </div>
+
+        <div class="comment-board">
+        </div>
+    </div>
+    {{/each}}
+</section>

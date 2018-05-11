@@ -6,6 +6,7 @@ const userSchema = new Schema({
     password: String,
     email: String,
     bio: String,
+    picturePath: {type: String, default: 'https://res.cloudinary.com/ddibftjux/image/upload/v1526028453/Logo_reddit_white.png'},
     role: [String]
 },
 {

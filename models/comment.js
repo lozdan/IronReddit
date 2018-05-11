@@ -6,7 +6,8 @@ const commentSchema = new Schema({
     postId: String,
     creatorId: String,
     depth: { type: Number, default: 0},
-    parentId: { type: String, default: null }
+    parentId: { type: String, default: null },
+    creatorImage: String
 },
     {
         timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

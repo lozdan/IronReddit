@@ -4,7 +4,7 @@ Schema = mongoose.Schema;
 const threadSchema = new Schema ({
     title: String,
     moderatorId: String,
-    picturePath: String
+    picturePath: {type: String, default: 'https://res.cloudinary.com/ddibftjux/image/upload/v1526028453/Logo_reddit_white.png'}
 },
 {
     timestamps: { 

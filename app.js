@@ -102,10 +102,14 @@ const index  = require('./routes/index');
 const auth   = require('./routes/authRoutes');
 const post   = require('./routes/postRoutes');
 const thread = require('./routes/threadRoutes');
+const comment = require('./routes/commentRoutes');
+const profile = require('./routes/profileRoutes');
 app.use('/', index);
 app.use('/', auth);
 app.use('/', post);
 app.use('/', thread);
+app.use('/', comment);
+app.use('/', profile);
 
 
 // catch 404 and forward to error handler

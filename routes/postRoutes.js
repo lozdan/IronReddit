@@ -4,18 +4,11 @@ const User = require("../models/user");
 const Post = require('../models/post');
 const Thread = require('../models/thread');
 const Vote = require('../models/vote');
+const Comment = require('../models/comment')
 const multer = require('multer');
 const upload = multer({ dest: './public/uploads/' });
 var cloudinary = require('cloudinary');
 const uploadCloud = require('../config/cloudinary');
-
-router.get('/create-post', (req, res, next) => {
-    if (!req.user) {
-        res.redirect('/login');
-    }
-    // console.log("I'm the passport: ", req.user);
-    res.render('post/choose-type');
-})
 
 router.get('/create-post-text', (req, res, next) => {
     if (!req.user) {
@@ -118,10 +111,6 @@ router.get('/post/:id', (req, res, next) => {
 })
 
 router.get('/post/:id/upvote', (req, res, next) => {
-    // if (!req.user) {
-    //     res.redirect('/login'); //not working :(
-    // }
-    // else {
     const userId = req.user._id;
     const postId = req.params.id;
 
@@ -161,9 +150,6 @@ router.get('/post/:id/upvote', (req, res, next) => {
                 .catch(err => console.log(err))
         })
         .catch(err => console.log(err));
-
-
-    // }
 })
 
 router.get('/post/:id/downvote', (req, res, next) => {
@@ -172,5 +158,34 @@ router.get('/post/:id/downvote', (req, res, next) => {
         downvote: true
     })
 })
+
+router.get ('/post/:id/comment', (req, res, next) => {
+    Comment.find({postId: req.params.id})
+    // .then( comments => {
+    //     if (!comments){
+    //         res.json({})
+    //     }
+    //     res.json(comments);
+        
+    // })
+
+
+    .then(comments => {
+        if (!comments){
+            res.json({})
+        }
+        Promise.all(comments.map(comment => User.findById(comment.creatorId).then(creator => {
+          comment = comment.toObject();
+          comment.creator = creator;
+          return comment;
+        }))).then(comments => {
+          res.json(comments);
+        })
+      })
+  })
+
+  router.post('/update-img-prof', uploadCloud.single('photo'), (req, res, next) => {
+    
+  })
 
 module.exports = router;
