@@ -1,3 +1,4 @@
+{{!--
 <form action="/create-post-text" method="POST">
     <label>Title</label>
     <input type="text" name="title">
@@ -6,4 +7,42 @@
     <label>Thread Title</label>
     <input type="text" name="thread">
     <input type="submit" value="post">
-</form>
+</form> --}}
+
+<head>
+    <link rel='stylesheet' href='./stylesheets/posts/upload.css'/>
+</head>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <form action="/create-post-text" method="POST">
+                <div id="contact-form" class="form-container" data-form-container>
+                    <div class="row">
+                        <div class="form-title">
+                            <span>Text Post</span>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="row">
+                            <span class="req-input">
+                                <span class="input-status" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name."> </span>
+                                <input type="text" data-min-length="8" placeholder="Full Name">
+                            </span>
+                        </div>
+                        
+                        <div class="row">
+                            <span class="req-input message-box">
+                                <span class="input-status" data-toggle="tooltip" data-placement="top" title="Please Include a Message."> </span>
+                                <textarea type="textarea" data-min-length="10" placeholder="Message"></textarea>
+                        </div>
+                        <div class="row submit-row">
+                            <button type="button" class="btn btn-block submit-form">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="./javascripts/posts.js"></script>

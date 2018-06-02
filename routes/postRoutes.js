@@ -111,7 +111,7 @@ router.get('/post/:id', (req, res, next) => {
         .catch(err => console.log(err));
 })
 
-router.get('/post/:id/upvote', (req, res, next) => {
+router.get('/post/upvote/:id', (req, res, next) => {
     const userId = req.user._id;
     const postId = req.params.id;
 
@@ -133,6 +133,7 @@ router.get('/post/:id/upvote', (req, res, next) => {
                         res.json(post.votes);
                     }
                     else {
+                        console.log("exist")
                         if (match.upvote === true) {
                             match.upvote = false;
                             post.votes--;
@@ -144,7 +145,7 @@ router.get('/post/:id/upvote', (req, res, next) => {
 
                         match.save();
                         post.save();
-                        console.log(post)
+                        console.log(match)
                         res.json(post.votes);
                     }
                 })

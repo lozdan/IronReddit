@@ -1,55 +1,95 @@
 <nav>
-    <img class="logo-nav" src="http://res.cloudinary.com/ddibftjux/image/upload/v1525990468/images/my-file-name.png">
+  <div class="container-fluid">
+    <div class="row align-items-end">
+      <div class="col-4">
+        <img class="logo-nav" src="http://res.cloudinary.com/ddibftjux/image/upload/v1525990468/images/my-file-name.png">
+      </div>
 
-    <div class="links">
-      <ul>
-        <li>
-          {{!--
-          <a href="/create-post">Post</a> --}}
-          <div class="dropdown">
-            <button class="dropbtn">
-              <a href="#">Post</a>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="/create-post-image">Picture</a>
-              <a href="/create-post-text">Text</a>
-              <a href="/create-post-link">Link</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="/profile">Profile</a>
-        </li>
-        <li>
-          <a href="/create-thread">Thread</a>
-        </li>
-        <li>
-          <a href="/logout">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <div class="col-2">
+        <a href="/profile">Profile</a>
+      </div>
 
-<div class="all-index">
-    <div class="threads-post">
-        {{#each threads}}
-        <div>
-            <a class="single-thread" data-id="{{this._id}}" href="javascript:">
-                <div>
-                    <img src={{this.picturePath}} class="thread-pics">
-                </div>
-                <div>
-                    <h1>{{this.title}}</h1>
-                    <h4>{{this.moderator.username}}</h4>
-                </div>
+      <div class="col-2">
+        <a href="/create-thread">Thread</a>
+      </div>
+
+      <div class="col-2">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Post
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a href="/create-post-image">
+              <button class="dropdown-item" type="button">Image</button>
             </a>
+
+            <a href="#exampleModal" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+              Text 
+            </a>
+
+            <a href="/create-post-link">
+              <button class="dropdown-item" type="button">Link</button>
+            </a>
+          </div>
         </div>
-        {{/each}}
+      </div>
+
+      <div class="col-2">
+        <a href="/logout">Logout</a>
+      </div>
+
     </div>
+  </div>
+</nav>
 
-    <div class="posts">
 
+<div class="container threads-post">
+  <div class="row">
+    <div class="col-md-4 sel">
+      {{#each threads}}
+      <a class="single-thread row align-items-center" data-id="{{this._id}}" href="javascript:">
+        <div class="col-6">
+          <img src={{this.picturePath}} class="thread-pics">
+        </div>
+        <div class="col-md-4">
+          <h1 class="thread-name">{{this.title}}</h1>
+          <h4>{{this.moderator.username}}</h4>
+        </div>
+      </a>
+      {{/each}}
     </div>
+    <div class="col-md-5 offset-md-3 posts">
+    </div>
+  </div>
+</div>
 
+
+<div class="container-fluid">
+
+</div>
+</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

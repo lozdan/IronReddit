@@ -65,12 +65,13 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 passport.serializeUser((user, cb) => {
+  console.log("serialize: ", user);
   cb(null, user.id);
 });
 
 passport.deserializeUser((id, cb) => {
   User.findById( id, (err, user) => {
-    if (err) { return cb(err); }
+    console.log("deserialize: ", user);
     cb(null, user);
   });
 });
