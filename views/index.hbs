@@ -20,16 +20,17 @@
             Post
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <a href="/create-post-image">
-              <button class="dropdown-item" type="button">Image</button>
+
+            <a class="dropdown-item" data-toggle="modal" data-target="#imageModal">
+              Image
             </a>
 
-            <a href="#exampleModal" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
-              Text 
+            <a class="dropdown-item" data-toggle="modal" data-target="#textModal">
+              Text
             </a>
 
-            <a href="/create-post-link">
-              <button class="dropdown-item" type="button">Link</button>
+            <a class="dropdown-item" data-toggle="modal" data-target="#linkModal">
+              Link
             </a>
           </div>
         </div>
@@ -65,30 +66,120 @@
 </div>
 
 
-<div class="container-fluid">
-
-</div>
-</div>
-</div>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Post Text Modal -->
+<div class="modal fade" id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title">Post Text</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form action="/create-post-text" method="POST">
+          <div id="contact-form" class="form-group" data-form-container>
+            <div class="input-container">
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name."> </span>
+                <input type="text" name="title" class="form-control" placeholder="Title">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Message."> </span>
+                <textarea type="textarea" name="text" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Thread."> </span>
+                <input type="text" name="thread" class="form-control" placeholder="Thread Name">
+              </div>
+              <br>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="post" class="btn btn-primary submit-form">Post Text</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Post Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Post Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/create-post-image" method="POST" enctype="multipart/form-data">
+          <div class="form-group" data-form-container>
+            <div class="input-container">
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name."> </span>
+                <input type="text" name="title" class="form-control" placeholder="Title">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Picture."> </span>
+                <input type="file" name="photo" class="form-control">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Thread."> </span>
+                <input type="text" name="thread" class="form-control" placeholder="Thread Name">
+              </div>
+              <br>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="Upload" class="btn btn-primary submit-form">Post Image</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Post Link Modal -->
+<div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Post Link</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/create-post-link" method="POST">
+          <div class="form-group" data-form-container>
+            <div class="input-container">
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name."> </span>
+                <input type="text" name="title" class="form-control" placeholder="Title">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Link."> </span>
+                <input type="text" name="link" class="form-control" placeholder="Link">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Thread."> </span>
+                <input type="text" name="thread" class="form-control" placeholder="Thread Name">
+              </div>
+              <br>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="post" class="btn btn-primary submit-form">Post Image</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

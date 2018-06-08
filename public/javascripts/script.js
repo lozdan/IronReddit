@@ -11,7 +11,7 @@ $(document).ready(() => {
                 else if (post.type === "text")
                     content = `<p class="text">${post.description}</p>`;
                 else 
-                    content = `<a href="${post.link}" class="link">${post.link}</a>`;
+                    content = `<p><a href="${post.link}" class="link">${post.link}</a></p>`;
 
                 $('.posts').append(
                     `
