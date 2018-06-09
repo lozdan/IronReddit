@@ -91,6 +91,10 @@ passport.use(new LocalStrategy({
       return next(null, false, { message: "Incorrect password" });
     }
 
+    // console.log("myUser before: ", myUser)
+    // myUser = username;
+    // console.log("myUser after: ", myUser);
+
     return next(null, user);
   });
 }));

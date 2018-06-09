@@ -14,7 +14,7 @@ nav {
 nav a {
   color: white;
   text-decoration: none !important;
-  font-size: 2rem; }
+  font-size: 1.8rem; }
 
 nav img {
   width: 150px;
@@ -26,7 +26,7 @@ nav img {
 #dropdownMenu2 {
   background-color: transparent;
   border: 0px;
-  font-size: 2rem; }
+  font-size: 1.8rem; }
 
 .dropdown-item {
   font-size: 1.5rem; }
@@ -52,6 +52,7 @@ nav img {
   background-color: #C1E5F2; }
 
 .single-post {
+  margin-right: 10%;
   margin-bottom: 30px; }
 
 .top {

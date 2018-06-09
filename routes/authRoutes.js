@@ -9,6 +9,7 @@ const multer  = require('multer');
 const upload = multer({ dest: './public/uploads/' });
 var cloudinary = require('cloudinary');
 const uploadCloud = require('../config/cloudinary');
+// let myUser = require('../public/javascripts/script')
 
 router.get('/login', (req, res, next) => {
     res.render('auth/login');
@@ -62,7 +63,7 @@ router.post('/signup', (req, res, next) => {
             })
 
             newUser.save()
-                .then(() => res.redirect('/register'))
+                .then(() => res.redirect('/login'))
                 .catch(err => res.send(err));
         }
     })
