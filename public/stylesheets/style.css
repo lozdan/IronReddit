@@ -83,4 +83,34 @@ button {
   overflow: hidden;
   outline: none; }
 
+.prof-user-img {
+  width: 15vw; }
+
+.center-block {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.img-name {
+  margin-top: 2vmax;
+  text-align: center; }
+
+.prof-edit-img {
+  width: 5vw;
+  margin-top: 60%; }
+
+.text {
+  font-size: 1.5rem;
+  text-align: center; }
+
+.link {
+  font-size: 1.3rem;
+  text-align: center; }
+
+.fa-trash {
+  font-size: 60px;
+  margin-top: 50%; }
+
 /*# sourceMappingURL=style.css.map */

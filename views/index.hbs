@@ -7,11 +7,11 @@
 
       {{#if user}}
       <div class="col-2">
-        <a href="/profile">Hello {{user.username}}</a>
+        <a href="/profile">Hi {{user.username}}</a>
       </div>
 
       <div class="col-2">
-        <a href="/create-thread">Thread</a>
+        <a href="#threadModal" data-toggle="modal" data-target="#threadModal">Thread</a>
       </div>
 
       <div class="col-2">
@@ -58,7 +58,7 @@
   <div class="row">
     <div class="col-md-4 sel">
       {{#each threads}}
-      <a class="single-thread row align-items-center" data-id="{{this._id}}" href="javascript:">
+      <div class="single-thread row align-items-center" data-id="{{this._id}}" href="javascript:">
         <div class="col-6">
           <img src={{this.picturePath}} class="thread-pics">
         </div>
@@ -66,7 +66,7 @@
           <h1 class="thread-name">{{this.title}}</h1>
           <h4>{{this.moderator.username}}</h4>
         </div>
-      </a>
+      </div>
       {{/each}}
     </div>
     <div class="col-md-5 offset-md-3 posts">
@@ -103,9 +103,11 @@
                 <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Thread."> </span>
                 <input type="text" name="thread" class="form-control" placeholder="Thread Name">
               </div>
-              <br>
+
+              <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" value="post" class="btn btn-primary submit-form">Post Text</button>
+              </div>
             </div>
           </div>
         </form>
@@ -185,7 +187,7 @@
               </div>
               <br>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" value="post" class="btn btn-primary submit-form">Post Image</button>
+              <button type="submit" value="post" class="btn btn-primary submit-form">Post Link</button>
             </div>
           </div>
         </form>
@@ -193,3 +195,37 @@
     </div>
   </div>
 </div>
+
+<!-- Create Thread Modal -->
+<div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Thread</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/create-thread" method="POST" enctype="multipart/form-data">
+          <div class="form-group" data-form-container>
+            <div class="input-container">
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name."> </span>
+                <input type="text" name="threadTitle" class="form-control" placeholder="Thread Title">
+              </div>
+              <br>
+              <div class="row">
+                <span class="check-text" data-toggle="tooltip" data-placement="top" title="Please Include a Picture."> </span>
+                <input type="file" name="photo" class="form-control">
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="Upload" class="btn btn-primary submit-form">Create Thread</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

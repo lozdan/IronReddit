@@ -63,19 +63,6 @@ nav img {
   background-color: #C1E5F2;
 }
 
-// .all-index {
-//   display: flex;
-//   flex-direction: row;
-//   // flex-wrap: wrap;
-// }
-
-// .posts {
-//   display: flex;
-//   flex-direction: column;
-//   margin-left: 10%;
-//   margin-top: 5%;
-// }
-
 .single-post {
   // border: #1ba8e2 solid 1px;
   margin-right: 10%;
@@ -103,13 +90,8 @@ nav img {
 .bottom {
   display: flex;
   justify-content: space-around;
-  // align-items: center;
   border: #1ba8e2 solid 1px;
 }
-
-// .bottom span {
-//   padding-left: 10px; 
-// }
 
 button {
   background-color: Transparent;
@@ -120,54 +102,39 @@ button {
   outline:none;
 }
 
-// .dropdown {
-//   float: left;
-//   overflow: hidden;
-// }
+.prof-user-img {
+  width: 15vw;
+}
 
-// .dropdown-content {
-//   display: none;
-//   position: absolute;
-//   background-color: #e5f2f4;
-//   min-width: 100px;
-//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-//   z-index: 1;
-// }
+.center-block {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-// .dropdown-content a {
-//   color: black;
-//   padding: 12px 16px;
-//   display: block;
-// }
+.img-name {
+  margin-top: 2vmax;
+  text-align: center;
+}
 
-// .dropdown-content a:hover {
-//   background-color: #ddd;
-// }
+.prof-edit-img {
+  width: 5vw;
+  margin-top: 60%;
+}
 
-// .dropdown:hover .dropdown-content {
-//   display: block;
-// }
+.text {
+  font-size: 1.5rem;
+  text-align: center;
+}
 
-// .profile-header {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   margin-top: 50px;
-//   margin-left: 40%;
-// }
+.link {
+  font-size: 1.3rem;
+  text-align: center;
+}
 
-// .profile-header div {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-
-// .prof-user-img {
-//   width: 150px;
-// }
-
-// .prof-edit-img {
-//   width: 30px; 
-// }
-
+.fa-trash {
+  font-size: 60px;
+  margin-top: 50%;
+}

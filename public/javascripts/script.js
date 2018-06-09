@@ -7,7 +7,7 @@ $(document).ready(() => {
             res.forEach(post => {
                 let content;
                 if (post.type === "picture")
-                    content = `<img class="img-fluid content-img" src=${post.picturePath}>`;
+                    content = `<img class="img-fluid center-block" src=${post.picturePath}>`;
                 else if (post.type === "text")
                     content = `<p class="text">${post.description}</p>`;
                 else 

@@ -161,33 +161,41 @@ router.get('/post/:id/downvote', (req, res, next) => {
     })
 })
 
-router.get ('/post/:id/comment', (req, res, next) => {
-    Comment.find({postId: req.params.id})
-    // .then( comments => {
-    //     if (!comments){
-    //         res.json({})
-    //     }
-    //     res.json(comments);
-        
-    // })
+router.get('/post/:id/comment', (req, res, next) => {
+    Comment.find({ postId: req.params.id })
+        // .then( comments => {
+        //     if (!comments){
+        //         res.json({})
+        //     }
+        //     res.json(comments);
+
+        // })
 
 
-    .then(comments => {
-        if (!comments){
-            res.json({})
-        }
-        Promise.all(comments.map(comment => User.findById(comment.creatorId).then(creator => {
-          comment = comment.toObject();
-          comment.creator = creator;
-          return comment;
-        }))).then(comments => {
-          res.json(comments);
+        .then(comments => {
+            if (!comments) {
+                res.json({})
+            }
+            Promise.all(comments.map(comment => User.findById(comment.creatorId).then(creator => {
+                comment = comment.toObject();
+                comment.creator = creator;
+                return comment;
+            }))).then(comments => {
+                res.json(comments);
+            })
         })
-      })
-  })
+})
 
-  router.post('/update-img-prof', uploadCloud.single('photo'), (req, res, next) => {
+router.post('/update-img-prof', uploadCloud.single('photo'), (req, res, next) => {
 
-  })
+})
+
+router.post(`/delete-post/:id`, (req, res, next) => {
+    Post.findByIdAndRemove(req.params.id)
+    .then(
+        () => res.render('profile')
+    )
+    .catch( err => console.log(err));
+})
 
 module.exports = router;
