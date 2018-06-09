@@ -1,6 +1,9 @@
 <div class="container-fluid">
     <header class="img-name row">
-        <div class="col-md-2 offset-md-5">
+        <div class="profile-link-home col-md-1 offset-md-4">
+            <a  href="/">Home</a>
+        </div>
+        <div class="col-md-2">
             <div>
                 <img class="prof-user-img" src={{user.picturePath}}>
             </div>
@@ -35,7 +38,7 @@
                     <p class="text">{{this.description}}</p>
                     {{/if}}
                 </div>
-                <div class="bottom row">
+                <div class="row align-items-center bottom">
                     <div class="upvote">
                         <div>
                             <button class="upvote" id={{this._id}}>
@@ -46,7 +49,7 @@
                     </div>
                     <div style="border-left: 2px solid #1ba8e2; height: 50px;"></div>
                     <div class="comment-board">
-                        <button class="comment-button" id="comment-{{this._id}}">
+                        <button class="comment-button" data-comment="{{this._id}}">
                             <img src="/images/chat box.png"> </button>
                     </div>
                 </div>
@@ -54,8 +57,10 @@
                 <div class="comment-board">
                 </div>
             </div>
-            <div class="delte-post offset-md-1 col-md-2" data-id="{{this._id}}">
-                <button><i class="fas fa-trash"></i></button>
+            <div class="delte-post offset-md-1 col-md-2" data-del="{{this._id}}">
+                <a href="/profile">
+                    <i class="fas fa-trash"></i>
+                </a>
             </div>
         </div>
         {{/each}}
@@ -86,8 +91,8 @@
                             <button type="submit" value="Upload" class="btn btn-primary submit-form">Update Image</button>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

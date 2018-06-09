@@ -190,10 +190,10 @@ router.post('/update-img-prof', uploadCloud.single('photo'), (req, res, next) =>
 
 })
 
-router.post(`/delete-post/:id`, (req, res, next) => {
+router.get(`/delete-post/:id`, (req, res, next) => {
     Post.findByIdAndRemove(req.params.id)
     .then(
-        () => res.render('profile')
+        deletedPost => {res.redirect('/profile')}
     )
     .catch( err => console.log(err));
 })

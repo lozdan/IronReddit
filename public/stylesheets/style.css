@@ -99,7 +99,7 @@ button {
 
 .prof-edit-img {
   width: 5vw;
-  margin-top: 60%; }
+  margin-top: 13vh; }
 
 .text {
   font-size: 1.5rem;
@@ -112,5 +112,9 @@ button {
 .fa-trash {
   font-size: 60px;
   margin-top: 50%; }
+
+.profile-link-home {
+  font-size: 1.7rem;
+  margin-top: 13vh; }
 
 /*# sourceMappingURL=style.css.map */

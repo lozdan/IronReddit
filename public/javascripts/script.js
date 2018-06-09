@@ -32,12 +32,14 @@ $(document).ready(() => {
                             <div class="upvote col-md-4 offset-md-2">
                                 <div>
                                     <button class="upvote" id=${post._id}><img src="/images/peace-emoji-navy.png"></button>
-                                    <span class="vote-count-${post._id}"><strong>${post.votes}</strong></span>
+                                    <span><strong class="vote-count-${post._id}">${post.votes}</strong></span>
                                 </div>
                             </div>
                             <div class="col-md-1" style="border-left: 2px solid #1ba8e2; height: 50px;"></div>
                             <div class="col-md-4 offset-md-1 comment-board">
-                                <button class="comment-button" id="comment-${post._id}"><img src="/images/chat box.png"> </button>
+                                <button class="comment-button" data-comment="${post._id}">
+                                    <img src="/images/chat box.png">
+                                </button>
                             </div>
                         </div>
 
@@ -48,10 +50,10 @@ $(document).ready(() => {
                 )
             })
             $(".upvote").click(function () {
-                postId = this.id;
+                let postId = this.id;
                 // console.log(postId);
                 $.getJSON(`/post/upvote/${postId}`, vote => {
-                    $(`.vote-count-${postId}`).text(vote);
+                    $(`.vote-count-${postId}`).html(`${vote}`);
                 })
 
             })
@@ -99,6 +101,15 @@ $(document).ready(() => {
             // })
 
             
+    })
+
+    $(".delte-post").click( function () {
+        console.log("this: ", this)
+        const postId = $(this).data('del');
+        console.log("postID: ", postId);
+        $.getJSON(`/delete-post/${postId}`, () => {
+            console.log("Deleted");
+        })
     })
 
 });

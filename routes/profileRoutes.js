@@ -19,9 +19,6 @@ router.get('/profile', (req, res, next) => {
         })
 })
 
-router.get('/update-prof-img', (req, res, next) => {
-    res.render('update-prof-img')
-})
 
 router.post('/update-prof-img', uploadCloud.single('photo'), (req, res, next) => {
     User.findByIdAndUpdate(req.user._id, { picturePath: req.file.url })
