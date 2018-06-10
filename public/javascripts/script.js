@@ -10,7 +10,7 @@ $(document).ready(() => {
                     content = `<img class="img-fluid center-block" src=${post.picturePath}>`;
                 else if (post.type === "text")
                     content = `<p class="text">${post.description}</p>`;
-                else 
+                else
                     content = `<p><a href="${post.link}" class="link">${post.link}</a></p>`;
 
                 $('.posts').append(
@@ -28,7 +28,7 @@ $(document).ready(() => {
                         <div class="row content">
                             ${content}
                         </div>
-                        <div class="row align-items-center bottom">
+                        <div class="row align-items-center bottom bottom-${post._id}">
                             <div class="upvote col-md-4 offset-md-2">
                                 <div>
                                     <button class="upvote" id=${post._id}><img src="/images/peace-emoji-navy.png"></button>
@@ -36,7 +36,7 @@ $(document).ready(() => {
                                 </div>
                             </div>
                             <div class="col-md-1" style="border-left: 2px solid #1ba8e2; height: 50px;"></div>
-                            <div class="col-md-4 offset-md-1 comment-board">
+                            <div class="col-md-4 offset-md-1 comment-board-${post._id}">
                                 <button class="comment-button" data-comment="${post._id}">
                                     <img src="/images/chat box.png">
                                 </button>
@@ -51,13 +51,36 @@ $(document).ready(() => {
             })
             $(".upvote").click(function () {
                 let postId = this.id;
-                // console.log(postId);
                 $.getJSON(`/post/upvote/${postId}`, vote => {
                     $(`.vote-count-${postId}`).html(`${vote}`);
                 })
 
+            });
+
+            $(".comment-button").click(function () {
+                let postId = $(this).data('comment');
+                $.getJSON(`/post/${postId}/comment`, comments => {
+                    comments.forEach(function (comment) {
+                        $(`.bottom-${postId}`).append(
+                            `
+                                <div class="single-comment">
+                                    <img src="${comment.creator.picturePath}">
+                                    <h5>${comment.creator.username}</h5>
+                                    <span>${comment.content}</span>
+                                </div>
+                            `
+                        )
+                    })
+                    $(`.bottom-${postId}`).append(
+                        `
+                        <form action="/new-comment/${postId}" method="POST">
+                            <textarea type="text" name="comment" cols="50"></textarea>
+                            <input type="submit" value="Comment">
+                        </form>
+                        `
+                    )
+                })
             })
-        })
 
             // .promise().done(function () {
 
@@ -75,35 +98,36 @@ $(document).ready(() => {
             //         $('.comment-board').empty();
             //         const postId = this.id.slice(8);
             //         console.log("post-id: ", postId)
-            //         $.getJSON(`/post/${postId}/comment`, comments => {
-            //             comments.forEach( function (comment) {
-            //                 $('.comment-board').append(
-            //                     `
-            //                         <div class="single-comment">
-            //                             <img src="${comment.creator.picturePath}">
-            //                             <h5>${comment.creator.username}</h5>
-            //                             <span>${comment.content}</span>
-            //                         </div>
-            //                     `
-            //                 )
-            //             })
-            //             $(`.comment-board`).append(
-            //                 `
-            //                 <form action="/new-comment/${postId}" method="POST">
-            //                     <textarea type="text" name="comment" cols="50"></textarea>
-            //                     <input type="submit" value="Comment">
-            //                 </form>
-            //                 `
-            //             )
+            // $.getJSON(`/post/${postId}/comment`, comments => {
+            //     comments.forEach( function (comment) {
+            //         $('.comment-board').append(
+            //             `
+            //                 <div class="single-comment">
+            //                     <img src="${comment.creator.picturePath}">
+            //                     <h5>${comment.creator.username}</h5>
+            //                     <span>${comment.content}</span>
+            //                 </div>
+            //             `
+            //         )
+            //     })
+            //     $(`.comment-board`).append(
+            //         `
+            //         <form action="/new-comment/${postId}" method="POST">
+            //             <textarea type="text" name="comment" cols="50"></textarea>
+            //             <input type="submit" value="Comment">
+            //         </form>
+            //         `
+            //     )
             //         })
 
             //     })
             // })
 
-            
+
+        })
     })
 
-    $(".delte-post").click( function () {
+    $(".delte-post").click(function () {
         console.log("this: ", this)
         const postId = $(this).data('del');
         console.log("postID: ", postId);
