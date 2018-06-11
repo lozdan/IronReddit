@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    var checkClicked = [];
     $(".single-thread").click(function () {
         $(".posts").empty();
         const tId = $(this).data('id');
@@ -59,71 +60,40 @@ $(document).ready(() => {
 
             $(".comment-button").click(function () {
                 let postId = $(this).data('comment');
-                $.getJSON(`/post/${postId}/comment`, comments => {
-                    comments.forEach(function (comment) {
+                console.log("checkClicked: ", checkClicked);
+                if (checkClicked.indexOf(postId) === -1) {
+                    checkClicked.push(postId);
+
+                    $.getJSON(`/post/${postId}/comment`, comments => {
+                        comments.forEach(function (comment) {
+
+                            $(`.bottom-${postId}`).append(
+                                `
+                            <div class="single-comment container-fluid"
+                                <div class="row">
+                                    <img class="col-md-2 comment-image" src="${comment.creator.picturePath}">
+                                    <h5 class="col-md-5">${comment.creator.username}</h5>
+                                    <div class="row">
+                                    <span class="col-md-10">${comment.content}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            `
+                            )
+                        })
                         $(`.bottom-${postId}`).append(
                             `
-                                <div class="single-comment">
-                                    <img src="${comment.creator.picturePath}">
-                                    <h5>${comment.creator.username}</h5>
-                                    <span>${comment.content}</span>
-                                </div>
+                            <div class="form-group">
+                                <form class="comment-form" action="/new-comment/${postId}" method="POST">
+                                    <textarea class="submit-field form-control" type="text" name="comment" cols="40"></textarea>
+                                    <input class="submit-comment" type="submit" value="Comment">
+                                </form>
+                            </div>
                             `
                         )
                     })
-                    $(`.bottom-${postId}`).append(
-                        `
-                        <form action="/new-comment/${postId}" method="POST">
-                            <textarea type="text" name="comment" cols="50"></textarea>
-                            <input type="submit" value="Comment">
-                        </form>
-                        `
-                    )
-                })
+                }
             })
-
-            // .promise().done(function () {
-
-            //     $(".upvote").click(function () {
-            //         postId = this.id;
-            //         console.log(postId);
-            //         $.getJSON(`/post/upvote/${postId}`, vote => {
-            //             $(`.vote-count-${postId}`).text(vote);
-            //         })
-
-            //     })
-
-
-            //     $(`.comment-button`).click(function () {
-            //         $('.comment-board').empty();
-            //         const postId = this.id.slice(8);
-            //         console.log("post-id: ", postId)
-            // $.getJSON(`/post/${postId}/comment`, comments => {
-            //     comments.forEach( function (comment) {
-            //         $('.comment-board').append(
-            //             `
-            //                 <div class="single-comment">
-            //                     <img src="${comment.creator.picturePath}">
-            //                     <h5>${comment.creator.username}</h5>
-            //                     <span>${comment.content}</span>
-            //                 </div>
-            //             `
-            //         )
-            //     })
-            //     $(`.comment-board`).append(
-            //         `
-            //         <form action="/new-comment/${postId}" method="POST">
-            //             <textarea type="text" name="comment" cols="50"></textarea>
-            //             <input type="submit" value="Comment">
-            //         </form>
-            //         `
-            //     )
-            //         })
-
-            //     })
-            // })
-
-
         })
     })
 

@@ -7,7 +7,8 @@ const commentSchema = new Schema({
     creatorId: String,
     depth: { type: Number, default: 0},
     parentId: { type: String, default: null },
-    creatorImage: String
+    creatorImage: String,
+    toogle: {type: Boolean, default: false}
 },
     {
         timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

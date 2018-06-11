@@ -8,6 +8,9 @@ const Comment = require('../models/comment')
 
 
 router.post("/new-comment/:postId", (req, res, next) => {
+    if (!req.user)
+     res.redirect("/login");
+     
     const content = req.body.comment;
     const creatorId = req.user._id;
     const postId = req.params.postId;
@@ -17,6 +20,8 @@ router.post("/new-comment/:postId", (req, res, next) => {
         creatorId,
         postId
     })
+
+    console.log("New comment: ", newComment);
 
     newComment.save()
     .then( () => res.redirect('/') )

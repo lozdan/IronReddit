@@ -143,3 +143,31 @@ button {
   font-size: 1.7rem;
   margin-top: 13vh;
 }
+
+.comment-image {
+  width: 5px;
+  height: 10%;
+}
+
+.single-comment {
+  border-top: #1ba8e2 solid 1px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+.submit-comment {
+  background-color: #1ba8e2;
+  border: #1ba8e2;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 20%;
+}
+
+.submit-field {
+  // background-color: #C1E5F2;
+  margin-left: 5px; 
+}
+
+.comment-form {
+  margin-top: 10px; 
+}

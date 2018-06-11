@@ -112,6 +112,13 @@ router.get('/post/:id', (req, res, next) => {
 })
 
 router.get('/post/upvote/:id', (req, res, next) => {
+    console.log("req.user: ", req.user)
+    if (!req.user) {
+        console.log("Inside of if ")
+        res.redirect('/login');
+    }
+
+    else{
     const userId = req.user._id;
     const postId = req.params.id;
 
@@ -152,6 +159,7 @@ router.get('/post/upvote/:id', (req, res, next) => {
                 .catch(err => console.log(err))
         })
         .catch(err => console.log(err));
+    }
 })
 
 router.get('/post/:id/downvote', (req, res, next) => {
