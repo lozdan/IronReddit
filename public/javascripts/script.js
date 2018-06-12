@@ -74,7 +74,7 @@ $(document).ready(() => {
                                     <img class="col-md-2 comment-image" src="${comment.creator.picturePath}">
                                     <h5 class="col-md-5">${comment.creator.username}</h5>
                                     <div class="row">
-                                    <span class="col-md-10">${comment.content}</span>
+                                    <p class="col-md-10">${comment.content}</p>
                                     </div>
                                 </div>
                             </div>
@@ -105,5 +105,4 @@ $(document).ready(() => {
             console.log("Deleted");
         })
     })
-
 });
